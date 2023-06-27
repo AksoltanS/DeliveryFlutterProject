@@ -8,10 +8,9 @@ import 'package:food_delivery_flutter_app/Styles/appstyle.dart';
 import 'package:food_delivery_flutter_app/constants.dart';
 
 class PocketFood extends StatefulWidget {
-   const PocketFood({Key? key}) : super(key: key);
+  const PocketFood({Key? key}) : super(key: key);
 
   @override
-  
   _PocketFoodState createState() => _PocketFoodState();
 }
 
@@ -86,15 +85,9 @@ class _PocketFoodState extends State<PocketFood> with TickerProviderStateMixin {
                   (index) => Padding(
                     padding: const EdgeInsets.only(left: defaultPadding),
                     child: RestaurantInfoCart(
-                      index: index,
-                      title: mealsCartData[index]["name"],
-                      location: mealsCartData[index]["location"],
-                      image: mealsCartData[index]["image"],
-                      deliveryTime: mealsCartData[index]["deliveryTime"],
-                      prize: mealsCartData[index]["prize"],
                       isMeal: true,
+                      index: index,
                       itemMap: mealsCartData[index],
-                      press: () {},
                     ),
                   ),
                 ),
@@ -121,15 +114,8 @@ class _PocketFoodState extends State<PocketFood> with TickerProviderStateMixin {
                       padding: const EdgeInsets.only(top: defaultPadding),
                       child: RestaurantInfoCart(
                         index: index,
-                        title: restaurantsCartData[index]["name"],
-                        location: restaurantsCartData[index]["location"],
-                        image: restaurantsCartData[index]["image"],
-                        deliveryTime: restaurantsCartData[index]
-                            ["deliveryTime"],
-                        prize: restaurantsCartData[index]["rating"],
                         isMeal: false,
-                        itemMap: mealsCartData[index],
-                        press: () {},
+                        itemMap: restaurantsCartData[index],
                       ),
                     ),
                   ),

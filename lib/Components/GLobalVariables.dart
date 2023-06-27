@@ -25,28 +25,32 @@ final List<Map<String, dynamic>> localShopItems = [
     "name": "Cherry",
     "image": "Assets/images/cherry.jpg",
     "prize": 12.0,
-    "colorARGB": Colors.pink.shade300.value
+    "colorARGB": Colors.pink.shade300.value,
+    "colorPrize": Colors.pink.value
   },
   {
     "type": "local",
     "name": "Watermelon",
     "image": "Assets/images/wmelon.jpg",
     "prize": 10.0,
-    "colorARGB": Colors.green.shade300.value
+    "colorARGB": Colors.green.shade300.value,
+    "colorPrize": Colors.green.value
   },
   {
     "type": "local",
     "name": "Melon",
     "image": "Assets/images/gulabi.jpg",
     "prize": 8.0,
-    "colorARGB": Colors.yellow.shade300.value
+    "colorARGB": Colors.yellow.shade300.value,
+    "colorPrize": Colors.yellow.value
   },
   {
     "type": "local",
     "name": "Grapes",
     "image": "Assets/images/sberry.jpg",
     "prize": 12.0,
-    "colorARGB": Colors.red.shade300.value
+    "colorARGB": Colors.red.shade300.value,
+    "colorPrize": Colors.red.value
   },
 ];
 List<Map<String, dynamic>> mealsCartData = [
@@ -85,6 +89,7 @@ List<Map<String, dynamic>> mealsCartData = [
 ];
 List<Map<String, dynamic>> restaurantsCartData = [
   {
+    "type": "restaurant",
     "name": " Mynasyp",
     "image": "Assets/images/borek.jpg",
     "location": "Turkmenabat, 3-nji k/e ",
@@ -92,6 +97,7 @@ List<Map<String, dynamic>> restaurantsCartData = [
     "deliveryTime": 25,
   },
   {
+    "type": "restaurant",
     "name": " Chillout",
     "image": "Assets/images/lagman.jpg",
     "location": "Turkmenabat",
@@ -99,6 +105,7 @@ List<Map<String, dynamic>> restaurantsCartData = [
     "deliveryTime": 25,
   },
   {
+    "type": "restaurant",
     "name": "Alpizza",
     "image": "Assets/images/pizza.jpg",
     "location": "Turkmenabat, Lebap sowda merkezi",
@@ -106,6 +113,7 @@ List<Map<String, dynamic>> restaurantsCartData = [
     "deliveryTime": 30,
   },
   {
+    "type": "restaurant",
     "name": "Maksatly",
     "image": "Assets/images/kebab.jpg",
     "location": "Turkmenabat, Bahar k/e",

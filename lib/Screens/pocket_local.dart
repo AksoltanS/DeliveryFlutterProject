@@ -60,10 +60,6 @@ class PocketLocal extends StatelessWidget {
                     ),
                     itemBuilder: (context, index) {
                       return GroceryItemTile(
-                          itemName: localShopItems[index]["name"],
-                          itemPrice: localShopItems[index]["prize"].toString(),
-                          imagePath: localShopItems[index]["image"],
-                          colorValue: localShopItems[index]["colorARGB"],
                           itemMap: localShopItems[index],
                           onPressed: () {
                             localNotifier.addItemToCart(index);

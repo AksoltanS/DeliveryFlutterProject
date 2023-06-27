@@ -8,19 +8,10 @@ class RestaurantInfoCart extends StatefulWidget {
   const RestaurantInfoCart(
       {Key? key,
       required this.index,
-      required this.title,
-      required this.image,
-      required this.deliveryTime,
-      required this.prize,
-      required this.press,
-      required this.location,
       required this.isMeal,
       required this.itemMap})
       : super(key: key);
-  final String title, image, location;
-  final int deliveryTime;
-  final double prize;
-  final VoidCallback press;
+
   final bool isMeal;
   final int index;
   final Map<String, dynamic> itemMap;
@@ -34,16 +25,29 @@ class _RestaurantInfoCartState extends State<RestaurantInfoCart> {
 
   @override
   Widget build(BuildContext context) {
+    String itemName = widget.itemMap["name"];
+    String imagePath = widget.itemMap["image"];
+    String itemLocation = widget.itemMap["location"];
+    int itemDeliveryTime = widget.itemMap["deliveryTime"];
+    String itemPrice = "";
+    String itemRating = "";
+
+    if (widget.isMeal) {
+      itemPrice = widget.itemMap["prize"].toString();
+    } else {
+      itemRating = widget.itemMap["rating"].toString();
+    }
+
     double width = 0;
     if (widget.isMeal) {
       width = MediaQuery.of(context).size.width * 0.4;
     } else {
       width = MediaQuery.of(context).size.width * 0.85;
     }
-    isliked = Provider.of<FavoriteModel>(context, listen: false).checkIfLiked(widget.itemMap);
+    isliked = Provider.of<FavoriteModel>(context, listen: false)
+        .checkIfLiked(widget.itemMap);
     return InkWell(
       borderRadius: const BorderRadius.all(Radius.circular(6)),
-      onTap: widget.press,
       child: Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
@@ -63,7 +67,7 @@ class _RestaurantInfoCartState extends State<RestaurantInfoCart> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
-              widget.image,
+              imagePath,
               width: width,
               fit: BoxFit.fill,
             ),
@@ -71,11 +75,11 @@ class _RestaurantInfoCartState extends State<RestaurantInfoCart> {
               height: defaultPadding / 2,
             ),
             Text(
-              widget.title,
+              itemName,
               maxLines: 1,
             ),
             Text(
-              widget.location,
+              itemLocation,
               style: const TextStyle(color: kBodyTextColor),
             ),
             Padding(
@@ -93,29 +97,36 @@ class _RestaurantInfoCartState extends State<RestaurantInfoCart> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Text(
-                        widget.prize.toString(),
+                        widget.isMeal ? itemPrice : itemRating,
                         style: const TextStyle(color: Colors.white),
                       ),
                     ),
                     const Spacer(),
-                    IconButton(
-                        onPressed: () {
-                          Provider.of<FoodModel>(context, listen: false)
-                              .addItemToCart(widget.index);
-                        },
-                        icon: const Icon(Icons.trolley)),
-                    IconButton(
-                        onPressed: () {
-                          Provider.of<FavoriteModel>(context, listen: false)
-                              .likeButtonToggled(widget.itemMap);
-                          setState(() {
-                            isliked = !isliked;
-                          });
-                        },
-                        icon: Icon(
-                            isliked ? Icons.favorite : Icons.favorite_border)),
+                    Visibility(
+                      visible: widget.isMeal,
+                      child: IconButton(
+                          onPressed: () {
+                            Provider.of<FoodModel>(context, listen: false)
+                                .addItemToCart(widget.index);
+                          },
+                          icon: const Icon(Icons.trolley)),
+                    ),
+                    Visibility(
+                      visible: widget.isMeal,
+                      child: IconButton(
+                          onPressed: () {
+                            Provider.of<FavoriteModel>(context, listen: false)
+                                .likeButtonToggled(widget.itemMap);
+                            setState(() {
+                              isliked = !isliked;
+                            });
+                          },
+                          icon: Icon(
+                              isliked ? Icons.favorite : Icons.favorite_border,
+                              color: Colors.red)),
+                    ),
                     const Spacer(),
-                    Text("${widget.deliveryTime} min"),
+                    Text("$itemDeliveryTime min"),
                   ],
                 ),
               ),
