@@ -1,10 +1,11 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:food_delivery_flutter_app/Screens/pocket_food.dart';
 import 'package:food_delivery_flutter_app/pages/cart_page.dart';
 import 'package:food_delivery_flutter_app/pages/favorite_page.dart';
 import 'package:food_delivery_flutter_app/pages/landing_page.dart';
 import 'package:food_delivery_flutter_app/pages/search_page.dart';
-
 
 List foodpagelist = [
   const PocketFood(),
@@ -20,37 +21,37 @@ List<List<String>> searchTerms = [
 ];
 final List<Map<String, dynamic>> localShopItems = [
   {
-    "type":"local",
+    "type": "local",
     "name": "Cherry",
     "image": "Assets/images/cherry.jpg",
     "prize": 12.0,
-    "color": Colors.pink
+    "colorARGB": Colors.pink.shade300.value
   },
   {
-    "type":"local",
+    "type": "local",
     "name": "Watermelon",
     "image": "Assets/images/wmelon.jpg",
     "prize": 10.0,
-    "color": Colors.green
+    "colorARGB": Colors.green.shade300.value
   },
   {
-    "type":"local",
+    "type": "local",
     "name": "Melon",
     "image": "Assets/images/gulabi.jpg",
     "prize": 8.0,
-    "color": Colors.yellow
+    "colorARGB": Colors.yellow.shade300.value
   },
   {
-    "type":"local",
+    "type": "local",
     "name": "Grapes",
     "image": "Assets/images/sberry.jpg",
     "prize": 12.0,
-    "color": Colors.red
+    "colorARGB": Colors.red.shade300.value
   },
 ];
 List<Map<String, dynamic>> mealsCartData = [
   {
-    "type":"food",
+    "type": "food",
     "name": "Samsa",
     "image": "Assets/images/samsa.jpg",
     "location": "Turkmenabat, Turkmen Tagam",
@@ -58,7 +59,7 @@ List<Map<String, dynamic>> mealsCartData = [
     "deliveryTime": 25,
   },
   {
-    "type":"food",
+    "type": "food",
     "name": " Lagman",
     "image": "Assets/images/lagman.jpg",
     "location": " Turkmenabat, Chillout",
@@ -66,7 +67,7 @@ List<Map<String, dynamic>> mealsCartData = [
     "deliveryTime": 30,
   },
   {
-    "type":"food",
+    "type": "food",
     "name": "Etli pizza",
     "image": "Assets/images/pizza.jpg",
     "location": "Turkmenabat, Alpizza",
@@ -74,7 +75,7 @@ List<Map<String, dynamic>> mealsCartData = [
     "deliveryTime": 30,
   },
   {
-    "type":"food",
+    "type": "food",
     "name": "Shashlyk",
     "image": "Assets/images/kebab.jpg",
     "location": "Turkmenabat, Maksatly cafe",

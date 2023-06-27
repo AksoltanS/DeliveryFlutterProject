@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery_flutter_app/Components/GLobalVariables.dart';
 import 'package:food_delivery_flutter_app/Components/grocery_item_tile.dart';
 import 'package:food_delivery_flutter_app/models/favorite_model.dart';
+import 'package:food_delivery_flutter_app/models/local_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import '../models/local_model.dart';
 
 class PocketLocal extends StatelessWidget {
   const PocketLocal({Key? key}) : super(key: key);
@@ -63,7 +63,7 @@ class PocketLocal extends StatelessWidget {
                           itemName: localShopItems[index]["name"],
                           itemPrice: localShopItems[index]["prize"].toString(),
                           imagePath: localShopItems[index]["image"],
-                          color: localShopItems[index]["color"],
+                          colorValue: localShopItems[index]["colorARGB"],
                           itemMap: localShopItems[index],
                           onPressed: () {
                             localNotifier.addItemToCart(index);

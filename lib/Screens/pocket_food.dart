@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:food_delivery_flutter_app/Components/GLobalVariables.dart';
 import 'package:food_delivery_flutter_app/Components/restaurant_info.dart';
@@ -6,10 +8,10 @@ import 'package:food_delivery_flutter_app/Styles/appstyle.dart';
 import 'package:food_delivery_flutter_app/constants.dart';
 
 class PocketFood extends StatefulWidget {
-  const PocketFood({Key? key}) : super(key: key);
+   const PocketFood({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
+  
   _PocketFoodState createState() => _PocketFoodState();
 }
 

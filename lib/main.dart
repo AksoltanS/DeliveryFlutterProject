@@ -9,13 +9,15 @@ import 'pages/landing_page.dart';
 
 Future<void> main() async {
   await Hive.initFlutter();
-  await Hive.openBox("favorites");
-  runApp(MultiProvider(providers: [
-    ChangeNotifierProvider(create: (context) => NavigationBarNotifier()),
-    ChangeNotifierProvider(create: (context) => LocalModel()),
-    ChangeNotifierProvider(create: (context) => FoodModel()),
-    ChangeNotifierProvider(create: (context) => FavoriteModel()),
-  ], child: const MyApp()));
+  await Hive.openBox<Map>("Favorites").then((box) {
+    //print("hive is open :" + box.isOpen.toString());
+    runApp(MultiProvider(providers: [
+      ChangeNotifierProvider(create: (context) => NavigationBarNotifier()),
+      ChangeNotifierProvider(create: (context) => LocalModel()),
+      ChangeNotifierProvider(create: (context) => FoodModel()),
+      ChangeNotifierProvider(create: (context) => FavoriteModel(box)),
+    ], child: const MyApp()));
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'My app',
+      title: 'Pocket',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,

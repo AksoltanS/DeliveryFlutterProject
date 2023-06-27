@@ -23,7 +23,7 @@ class RestaurantInfoCart extends StatefulWidget {
   final VoidCallback press;
   final bool isMeal;
   final int index;
-  final Map<String,dynamic> itemMap;
+  final Map<String, dynamic> itemMap;
 
   @override
   State<RestaurantInfoCart> createState() => _RestaurantInfoCartState();
@@ -40,6 +40,7 @@ class _RestaurantInfoCartState extends State<RestaurantInfoCart> {
     } else {
       width = MediaQuery.of(context).size.width * 0.85;
     }
+    isliked = Provider.of<FavoriteModel>(context, listen: false).checkIfLiked(widget.itemMap);
     return InkWell(
       borderRadius: const BorderRadius.all(Radius.circular(6)),
       onTap: widget.press,
@@ -106,7 +107,7 @@ class _RestaurantInfoCartState extends State<RestaurantInfoCart> {
                     IconButton(
                         onPressed: () {
                           Provider.of<FavoriteModel>(context, listen: false)
-                          .addItemToFavoriteCart(widget.itemMap);
+                              .likeButtonToggled(widget.itemMap);
                           setState(() {
                             isliked = !isliked;
                           });

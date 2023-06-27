@@ -6,15 +6,15 @@ class GroceryItemTile extends StatefulWidget {
   final String itemName;
   final String itemPrice;
   final String imagePath;
-  final MaterialColor color;
+  final int colorValue;
   final void Function()? onPressed;
-  final Map<String,dynamic> itemMap;
+  final Map<String, dynamic> itemMap;
   const GroceryItemTile(
       {super.key,
       required this.itemName,
       required this.itemPrice,
       required this.imagePath,
-      required this.color,
+      required this.colorValue,
       required this.itemMap,
       required this.onPressed});
 
@@ -26,12 +26,14 @@ class _GroceryItemTileState extends State<GroceryItemTile> {
   bool isliked = false;
   @override
   Widget build(BuildContext context) {
+    isliked = Provider.of<FavoriteModel>(context, listen: false)
+        .checkIfLiked(widget.itemMap);
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: widget.color[100],
+          color: Color(widget.colorValue),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
@@ -49,7 +51,7 @@ class _GroceryItemTileState extends State<GroceryItemTile> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Card(
-                  color: widget.color,
+                  color: Color(widget.colorValue),
                   child: Container(
                     padding: const EdgeInsets.all(10),
                     child: Text(
@@ -63,11 +65,11 @@ class _GroceryItemTileState extends State<GroceryItemTile> {
                 ),
                 IconButton(
                     onPressed: widget.onPressed,
-                    icon: const Icon(Icons.add_card)),
+                    icon: const Icon(Icons.trolley)),
                 IconButton(
                     onPressed: () {
                       Provider.of<FavoriteModel>(context, listen: false)
-                          .addItemToFavoriteCart(widget.itemMap);
+                          .likeButtonToggled(widget.itemMap);
                       setState(() {
                         isliked = !isliked;
                       });

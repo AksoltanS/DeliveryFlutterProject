@@ -46,8 +46,7 @@ class FavoritePage extends StatelessWidget {
                               '\$${favoriteNotifier.favoriteItems[index]["prize"]}'),
                           trailing: IconButton(
                             icon: const Icon(Icons.cancel),
-                            onPressed: () => Provider.of<FavoriteModel>(context,
-                                    listen: false)
+                            onPressed: () => favoriteNotifier
                                 .removeItemFromFavoriteCart(index),
                           ),
                         ),
