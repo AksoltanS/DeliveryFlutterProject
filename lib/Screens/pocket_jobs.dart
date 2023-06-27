@@ -25,22 +25,23 @@ class _PocketJobState extends State<PocketJob> {
           bottom: const TabBar(
               unselectedLabelColor: Colors.grey,
               labelColor: Colors.red,
-              tabs: [Tab(text: "Iş beriji "), Tab(text: "iş gözleýänler ")]),
+              tabs: [Tab(text: " Employees "), Tab(text: "Job Seekers ")]),
         ),
         body: TabBarView(
           children: <Widget>[
             ListView.builder(
               itemCount: 40,
               itemBuilder: ((context, index) => ListTile(
-                    title: Image.asset("Assets/images/manty.jpg"),
-                    trailing: const Text(" App developer gerek "),
+                    title: Image.asset("Assets/images/landing_jobs.jpg"),
+                    trailing: const Text(" Looking for an app developer"),
                   )),
             ),
             ListView.builder(
               itemCount: 40,
               itemBuilder: ((context, index) => ListTile(
-                    title: Image.asset("Assets/images/borek.jpg"),
-                    trailing: const Text(" Is gozleyan "),
+                    title: Image.asset("Assets/images/landing_jobs.jpg"),
+                    trailing: const Text(
+                        " An app developer, with 2 years experience"),
                   )),
             )
           ],
