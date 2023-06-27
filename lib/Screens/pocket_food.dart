@@ -67,12 +67,11 @@ class _PocketFoodState extends State<PocketFood> with TickerProviderStateMixin {
               ),
             ),
           ),
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
+          const SliverPadding(
+            padding: EdgeInsets.symmetric(horizontal: defaultPadding),
             sliver: SliverToBoxAdapter(
               child: SectionTile(
                 title: "Meals",
-                press: () {},
               ),
             ),
           ),
@@ -83,7 +82,10 @@ class _PocketFoodState extends State<PocketFood> with TickerProviderStateMixin {
                 children: List.generate(
                   mealsCartData.length,
                   (index) => Padding(
-                    padding: const EdgeInsets.only(left: defaultPadding),
+                    padding: const EdgeInsets.only(
+                        left: defaultPadding,
+                        bottom: defaultPadding,
+                        top: defaultPadding),
                     child: RestaurantInfoCart(
                       isMeal: true,
                       index: index,
@@ -94,12 +96,11 @@ class _PocketFoodState extends State<PocketFood> with TickerProviderStateMixin {
               ),
             ),
           ),
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
+          const SliverPadding(
+            padding: EdgeInsets.symmetric(horizontal: defaultPadding),
             sliver: SliverToBoxAdapter(
               child: SectionTile(
                 title: "Restaurants",
-                press: () {},
               ),
             ),
           ),

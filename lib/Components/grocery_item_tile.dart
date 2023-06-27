@@ -72,7 +72,7 @@ class _GroceryItemTileState extends State<GroceryItemTile> {
                     },
                     icon: Icon(
                       isliked ? Icons.favorite : Icons.favorite_border,
-                      color: Colors.purple,
+                      color: Colors.red,
                     )),
               ],
             )

@@ -103,6 +103,7 @@ class NestedPage extends StatelessWidget {
                       navNotifier.pageIndex = 3;
                     },
                     icon: Icons.favorite,
+                    iconColor: Colors.red,
                     text: 'Favorites',
                   ),
                 ],

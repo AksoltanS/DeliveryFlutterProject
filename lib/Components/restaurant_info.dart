@@ -39,100 +39,104 @@ class _RestaurantInfoCartState extends State<RestaurantInfoCart> {
     }
 
     double width = 0;
+    double height = 0;
     if (widget.isMeal) {
       width = MediaQuery.of(context).size.width * 0.4;
+      height = MediaQuery.of(context).size.height * 0.14;
     } else {
       width = MediaQuery.of(context).size.width * 0.85;
+      height = MediaQuery.of(context).size.height * 0.3;
     }
     isliked = Provider.of<FavoriteModel>(context, listen: false)
         .checkIfLiked(widget.itemMap);
-    return InkWell(
-      borderRadius: const BorderRadius.all(Radius.circular(6)),
-      child: Container(
-        padding: const EdgeInsets.all(12),
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 3,
-                blurRadius: 10,
-                offset: const Offset(0, 3),
-              ),
-            ]),
-        width: width,
-        //height: height,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Image.asset(
+    return Container(
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 3,
+              blurRadius: 10,
+              offset: const Offset(0, 3),
+            ),
+          ]),
+      width: width,
+      //height: height,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: width,
+            height: height,
+            child: Image.asset(
               imagePath,
-              width: width,
               fit: BoxFit.fill,
             ),
-            const SizedBox(
-              height: defaultPadding / 2,
-            ),
-            Text(
-              itemName,
-              maxLines: 1,
-            ),
-            Text(
-              itemLocation,
-              style: const TextStyle(color: kBodyTextColor),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: defaultPadding / 2),
-              child: DefaultTextStyle(
-                style: const TextStyle(color: Colors.black, fontSize: 12),
-                child: Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: defaultPadding / 2,
-                          vertical: defaultPadding / 8),
-                      decoration: BoxDecoration(
-                        color: kActiveColor,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Text(
-                        widget.isMeal ? itemPrice : itemRating,
-                        style: const TextStyle(color: Colors.white),
-                      ),
+          ),
+          const SizedBox(
+            height: defaultPadding / 2,
+          ),
+          Text(
+            itemName,
+            maxLines: 1,
+          ),
+          Text(
+            itemLocation,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(color: kBodyTextColor),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: defaultPadding / 4),
+            child: DefaultTextStyle(
+              style: const TextStyle(color: Colors.black, fontSize: 12),
+              child: Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: defaultPadding / 2,
+                        vertical: defaultPadding / 8),
+                    decoration: BoxDecoration(
+                      color: kActiveColor,
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    const Spacer(),
-                    Visibility(
-                      visible: widget.isMeal,
-                      child: IconButton(
-                          onPressed: () {
-                            Provider.of<FoodModel>(context, listen: false)
-                                .addItemToCart(widget.index);
-                          },
-                          icon: const Icon(Icons.trolley)),
+                    child: Text(
+                      widget.isMeal ? itemPrice : itemRating,
+                      style: const TextStyle(color: Colors.white),
                     ),
-                    Visibility(
-                      visible: widget.isMeal,
-                      child: IconButton(
-                          onPressed: () {
-                            Provider.of<FavoriteModel>(context, listen: false)
-                                .likeButtonToggled(widget.itemMap);
-                            setState(() {
-                              isliked = !isliked;
-                            });
-                          },
-                          icon: Icon(
-                              isliked ? Icons.favorite : Icons.favorite_border,
-                              color: Colors.red)),
-                    ),
-                    const Spacer(),
-                    Text("$itemDeliveryTime min"),
-                  ],
-                ),
+                  ),
+                  const Spacer(),
+                  Visibility(
+                    visible: widget.isMeal,
+                    child: IconButton(
+                        onPressed: () {
+                          Provider.of<FoodModel>(context, listen: false)
+                              .addItemToCart(widget.index);
+                        },
+                        icon: const Icon(Icons.trolley)),
+                  ),
+                  Visibility(
+                    visible: widget.isMeal,
+                    child: IconButton(
+                        onPressed: () {
+                          Provider.of<FavoriteModel>(context, listen: false)
+                              .likeButtonToggled(widget.itemMap);
+                          setState(() {
+                            isliked = !isliked;
+                          });
+                        },
+                        icon: Icon(
+                            isliked ? Icons.favorite : Icons.favorite_border,
+                            color: Colors.red)),
+                  ),
+                  const Spacer(),
+                  Text("$itemDeliveryTime min"),
+                ],
               ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }
